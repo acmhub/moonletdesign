@@ -58,12 +58,21 @@ export async function getStaticProps({ locale }) {
         }
     });
 
-    let projects = data?.data.posts.edges.map(({ node }) => node);
+    let projects = data?.data.posts.edges
+        .map(({ node }) => node)
+        .map((project) => {
+            return { ...project, language, path: `/portfolio/${project.slug}` };
+        });
+
+    const page = {
+        ...data?.data.generalSettings
+    };
 
     return {
         props: {
             ...(await serverSideTranslations(locale, ['common', 'home'])),
-            projects
+            projects,
+            page
         }
     };
 }
