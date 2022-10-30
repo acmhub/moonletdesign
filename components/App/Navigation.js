@@ -10,7 +10,7 @@ export default function Navigation() {
 
     return (
         <nav>
-            <div className="container-padding flex justify-between border-b">
+            <div className="container-padding flex items-center justify-between border-b">
                 <h2>Moonlet</h2>
 
                 <div className="hidden lg:flex lg:space-x-2">
